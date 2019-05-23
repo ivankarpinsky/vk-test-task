@@ -1,5 +1,9 @@
 body {
     background: url(img/background.png);
+    font-family: Montserrat;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 19px;
     /*background-size: auto;*/
     /*width: 1200px;*/
     /*height: 655px;*/
@@ -7,10 +11,6 @@ body {
 
 .main-wrapper {
     margin: 21px 20px 20px 20px;
-    font-family: Montserrat;
-    font-style: normal;
-    font-size: 13px;
-    line-height: 19px;
     display: flex;
     align-items: flex-start;
 }
@@ -42,9 +42,9 @@ body {
 }
 
 .card {
+    cursor:pointer;
     margin-bottom: 8px;
     width: 248px;
-    /*height: 35px;*/
     background: #FFFFFF;
     box-shadow: 0 1px 4px rgba(9, 45, 66, 0.25);
     border-radius: 3px;
@@ -141,4 +141,16 @@ body {
 
 .hidden {
     display:none;
+}
+
+.dragged-clone {
+    transform: rotate(5deg);
+}
+
+.dragged-object {
+    background-color: #C9D2D9;
+}
+
+.uponMe {
+    background: green;
 }
