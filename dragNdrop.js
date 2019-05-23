@@ -111,13 +111,10 @@ let dragMaster = (function () {
     function mouseUp(e) {
         e = fixEvent(e);
 
-        if (currentDropTarget) {
-            // showRollOff(currentDropTarget)
-        }
         dragObject.innerHTML = dragClone.innerHTML;
         dragObject.classList.remove('dragged-object');
         dragClone.parentElement.removeChild(dragClone);
-        // dragClone = null;
+
         removeDocumentEventHandlers();
     }
 
@@ -152,7 +149,6 @@ let dragMaster = (function () {
     // public методы и свойства
     return {
         makeDraggable: function (element) {
-            // сделать элемент переносимым
             element.onmousedown = mouseDown;
         },
         addDropTarget: function (dropTarget) {
