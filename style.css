@@ -68,8 +68,8 @@ body {
     margin-right: 8px;
 }
 
-.new-card-wrapper,
-.new-column-wrapper {
+.adding-card-wrapper,
+.adding-column-wrapper {
     display:none;
     margin-top: 8px;
     margin-bottom: 12px;
