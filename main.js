@@ -3,8 +3,10 @@
 document.onkeydown = function (e) {
     e = e || window.event;
     if ((event.ctrlKey) && (event.keyCode === 13)) {
-        e.preventDefault();
         let buttons = document.getElementsByClassName('green-button');
+
+        e.preventDefault();
+
         for (let elem of buttons) {
             if (elem.onclick) {
                 elem.click();
@@ -38,14 +40,14 @@ window.onload = function () {
 };
 
 function addNewCard() {
-    let adding_card_wrapper = this.parentElement.getElementsByClassName('adding-card-wrapper')[0],
-        button = adding_card_wrapper.getElementsByClassName('green-button')[0],
-        cancel = adding_card_wrapper.getElementsByClassName('cross-mark')[0],
-        cards_wrapper = this.parentElement.getElementsByClassName('cards-wrapper')[0],
-        textarea = adding_card_wrapper.getElementsByClassName('new-card-text')[0],
-        hidden_div = cards_wrapper.getElementsByClassName("hiddendiv")[0],
-        content = null,
-        add_new_card_button = this;
+    let adding_card_wrapper = this.parentElement.getElementsByClassName('adding-card-wrapper')[0];
+    let button = adding_card_wrapper.getElementsByClassName('green-button')[0];
+    let cancel = adding_card_wrapper.getElementsByClassName('cross-mark')[0];
+    let cards_wrapper = this.parentElement.getElementsByClassName('cards-wrapper')[0];
+    let textarea = adding_card_wrapper.getElementsByClassName('new-card-text')[0];
+    let hidden_div = cards_wrapper.getElementsByClassName("hiddendiv")[0];
+    let content = null;
+    let add_new_card_button = this;
 
     textareaAutoHeight();
 
@@ -101,16 +103,16 @@ function addNewCard() {
 
 function addNewColumn() {
     let main_wraper = document.getElementsByClassName('main-wrapper')[0],
-        hidden_col = main_wraper.children[0],
-        new_col = hidden_col.cloneNode(true),
-        adding_column_wrapper = new_col.getElementsByClassName('adding-column-wrapper')[0],
-        textarea = adding_column_wrapper.getElementsByClassName('new-column-text')[0],
-        button = adding_column_wrapper.getElementsByClassName('green-button')[0],
-        cancel = adding_column_wrapper.getElementsByClassName('cross-mark')[0],
-        cards_wrapper = new_col.getElementsByClassName('cards-wrapper')[0],
-        hidden_div = cards_wrapper.getElementsByClassName("hiddendiv")[0],
-        content = null;
-        new_col.style.display = "block";
+    let hidden_col = main_wraper.children[0];
+    let new_col = hidden_col.cloneNode(true);
+    let adding_column_wrapper = new_col.getElementsByClassName('adding-column-wrapper')[0];
+    let textarea = adding_column_wrapper.getElementsByClassName('new-column-text')[0];
+    let button = adding_column_wrapper.getElementsByClassName('green-button')[0];
+    let cancel = adding_column_wrapper.getElementsByClassName('cross-mark')[0];
+    let cards_wrapper = new_col.getElementsByClassName('cards-wrapper')[0];
+    let hidden_div = cards_wrapper.getElementsByClassName("hiddendiv")[0];
+    let content = null;
+    let new_col.style.display = "block";
         
     new_col.getElementsByClassName('add-new-card')[0].style.display = "none";
     new_col.getElementsByClassName('adding-column-wrapper')[0].style.display = "block";
@@ -127,7 +129,7 @@ function addNewColumn() {
         textarea.classList.add('noscroll');
         textarea.style.height = "34px";
 
-        textarea.onkeyup = function () {
+        textarea.oninput = function () {
             content = textarea.value;
             content = content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
             hidden_div.innerHTML = content;
