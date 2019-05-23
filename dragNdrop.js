@@ -3,14 +3,9 @@ let dragMaster = (function () {
     let dragClone;
     let dragObject;
     let mouseOffset;
-
     let dropTargets = [];
-
-    /* кеш прямоугольников границ акцепторов */
-    let dropTargetRectangles;
-
-    /* текущий акцептор, над которым объект в данный момент */
-    let currentDropTarget;
+    let dropTargetRectangles; /* кеш прямоугольников границ акцепторов */
+    let currentDropTarget;    /* текущий акцептор, над которым объект в данный момент */
 
     function cacheDropTargetRectangles() {
         dropTargetRectangles = [];
@@ -31,7 +26,6 @@ let dragMaster = (function () {
         }
 
     }
-
 
     // получить сдвиг target относительно курсора мыши
     function getMouseOffset(target, e) {
@@ -71,8 +65,7 @@ let dragMaster = (function () {
         for (let i = 0; i < dropTargetRectangles.length; i++) {
             let rect = dropTargetRectangles[i];
 
-            if (
-                (e.pageX > rect.xmin) &&
+            if ((e.pageX > rect.xmin) &&
                 (e.pageX < rect.xmax) &&
                 (e.pageY > rect.ymin) &&
                 (e.pageY < rect.ymax)) {
@@ -85,6 +78,8 @@ let dragMaster = (function () {
 
 
     function mouseMove(e) {
+        let newTarget = null;
+
         e = fixEvent(e);
 
         with (dragClone.style) {
@@ -93,7 +88,7 @@ let dragMaster = (function () {
             left = e.pageX - mouseOffset.x + 'px';
         }
 
-        let newTarget = getCurrentTarget(e);
+        newTarget = getCurrentTarget(e);
 
         if (currentDropTarget && currentDropTarget != newTarget) {
             showRollOff(currentDropTarget);
@@ -177,6 +172,7 @@ function getPosition(e) {
 function insertAfter(elem, refElem) {
     let parent = refElem.parentNode;
     let next = refElem.nextSibling;
+
     if (next) {
         return parent.insertBefore(elem, next);
     } else {
